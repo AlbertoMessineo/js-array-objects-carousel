@@ -3,11 +3,11 @@
 
 
 // MARK UP HTML
-// const images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
-// const slider = document.querySelector('.slider');
-// let currentSlide = 0;
-// const prev = document.querySelector('.prev');
-// const next = document.querySelector('.next');
+
+const slider = document.querySelector('.slider');
+let currentSlide = 0;
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
 
 // for (let i = 0; i < images.length; i++) {
 
@@ -18,7 +18,7 @@
 //     if (i === currentSlide) {
 //         slide.classList.add('active');
 //     }
-
+// }
 //     //img
 //     const img = document.createElement('img');
 //     img.src = `img/${images[i]}`;
@@ -27,44 +27,64 @@
 //     slide.append(img);
 //     slider.append(slide);
 
-// }
+//}
 
 // OBJECT ARRAY CREATION
 let imagesArray = [
     {
-        url: '<img src="img/01.jpg" alt="img-1">',
+        url: 'img/01.jpg',
         title: 'Immagine Carosello 1',
         caption: 'Immagine stupenda',
     },
     {
-        url: '<img src="img/02.jpg" alt="img-2">',
+        url: 'img/02.jpg',
         title: 'Immagine Carosello 2',
         caption: 'Immagine stupenda',
-    },,
+    },
     {
-        url: '<img src="img/03.jpg" alt="img-3">',
+        url: 'img/03.jpg',
         title: 'Immagine Carosello 3',
         caption: 'Immagine stupenda',
     },
     {
-        url: '<img src="img/04.jpg" alt="img-4">',
+        url: 'img/04.jpg',
         title: 'Immagine Carosello 4',
         caption: 'Immagine stupenda',
     },
     {
-        url: '<img src="img/05.jpg" alt="img-5">',
+        url: 'img/05.jpg',
         title: 'Immagine Carosello 5',
         caption: 'Immagine stupenda',
     },
     {
-        url: '<img src="img/06.jpg" alt="img-6">',
+        url: 'img/06.jpg',
         title: 'Immagine Carosello 6',
         caption: 'Immagine stupenda',
     }
 ];
-console.log(imagesArray);
 
 
+// loopare su array di oggeti
+
+for (let i = 0; i < imagesArray.length - 1; i++) {
+    const slide = imagesArray[i];
+    //slide
+    const slideElement = document.createElement('div');
+    slideElement.classList.add('slide');
+    if (i === currentSlide) {
+            slideElement.classList.add('active');
+        }
+    //testo
+    console.log(slide.caption);
+    const slideElementContent = `
+    <img src=${slide.url} alt="">
+    <h3>${slide.title}</h3>
+    <p>${slide.caption}</p>`;
+   
+    slideElement.innerHTML = slideElementContent;
+    slider.append(slideElement);
+    console.log(slider);
+}
 
 const domSlides = document.querySelectorAll('.slide');
 
